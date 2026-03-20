@@ -1,0 +1,55 @@
+$govuk-assets-path: '/govuk-test/assets/';
+
+@import 'govuk-frontend/dist/govuk/index';
+@import 'accessible-autocomplete/dist/accessible-autocomplete.min.css';
+
+// Home page H1 accent underline
+.app-home-heading {
+  &::after {
+    content: '';
+    display: block;
+    width: govuk-spacing(9);
+    height: govuk-spacing(1);
+    background: $govuk-brand-colour;
+    margin-top: govuk-spacing(2);
+  }
+}
+
+// Section headings on the home page
+.app-section-heading {
+  padding-bottom: govuk-spacing(2);
+  border-bottom: 1px solid $govuk-border-colour;
+}
+
+// Component page heading with right-aligned link
+.app-page-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: govuk-spacing(2);
+}
+
+// Home page card grid
+.app-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: govuk-spacing(4);
+}
+
+.app-card-column {
+  display: flex;
+  margin-bottom: govuk-spacing(6);
+}
+
+.app-card {
+  border: 1px solid $govuk-border-colour;
+  border-left: 4px solid $govuk-brand-colour;
+  padding: govuk-spacing(4);
+  width: 100%;
+  box-sizing: border-box;
+
+  &__title {
+    margin-bottom: 0;
+  }
+}
