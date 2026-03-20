@@ -27,7 +27,15 @@ const components = [
 export function Layout({ children, backLink }) {
   return (
     <>
-      <a href="#main-content" className="govuk-skip-link" data-module="govuk-skip-link">
+      <a
+        href="#main-content"
+        className="govuk-skip-link"
+        data-module="govuk-skip-link"
+        onClick={(e) => {
+          e.preventDefault()
+          document.getElementById('main-content')?.focus()
+        }}
+      >
         Skip to main content
       </a>
       <div className="govuk-width-container">
@@ -38,7 +46,7 @@ export function Layout({ children, backLink }) {
             </Link>
           </nav>
         )}
-        <main className="govuk-main-wrapper" id="main-content">
+        <main className="govuk-main-wrapper" id="main-content" tabIndex={-1}>
           {children}
         </main>
       </div>
