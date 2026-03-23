@@ -50,17 +50,6 @@ export function Layout({ children, backLink }) {
           {children}
         </main>
       </div>
-      {/* <footer className="govuk-footer" role="contentinfo">
-        <div className="govuk-width-container">
-          <div className="govuk-footer__meta">
-            <div className="govuk-footer__meta-item govuk-footer__meta-item--grow">
-              <span className="govuk-footer__licence-description">
-                Hosted on GitHub Pages · Built with React + Vite · govuk-frontend
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer> */}
     </>
   )
 }

@@ -3,6 +3,11 @@ $govuk-assets-path: '/govuk-test/assets/';
 @import 'govuk-frontend/dist/govuk/index';
 @import 'accessible-autocomplete/dist/accessible-autocomplete.min.css';
 
+// Preserve this so sub components inherit it - seems to avoid some css shifts
+body {
+  margin: 0;
+}
+
 // Home page H1 accent underline
 .app-home-heading {
   &::after {
