@@ -40,26 +40,27 @@ export default function TextInputPage() {
         </div>
       </Section>
 
-      {/* With hint text */}
+      {/* Required */}
       <Section
-        title="With hint text"
-        description="Use hint text for help that's relevant to the majority of users."
+        title="Required"
+        description="Use the required attribute to prevent form submission without a value."
       >
-        <div className="govuk-form-group">
-          <label className="govuk-label" htmlFor="event-name">
-            What is the name of the event?
-          </label>
-          <div id="event-name-hint" className="govuk-hint">
-            The name you&apos;ll use on promotional material.
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="required-full-name">
+              Full name
+            </label>
+            <input
+              className="govuk-input"
+              id="required-full-name"
+              name="required-full-name"
+              type="text"
+              autoComplete="name"
+              required
+            />
           </div>
-          <input
-            className="govuk-input"
-            id="event-name"
-            name="event-name"
-            type="text"
-            aria-describedby="event-name-hint"
-          />
-        </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
       </Section>
 
       {/* With error */}
@@ -84,6 +85,28 @@ export default function TextInputPage() {
             name="name-error"
             type="text"
             aria-describedby="name-error-hint name-error-message"
+          />
+        </div>
+      </Section>
+
+      {/* With hint text */}
+      <Section
+        title="With hint text"
+        description="Use hint text for help that's relevant to the majority of users."
+      >
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="event-name">
+            What is the name of the event?
+          </label>
+          <div id="event-name-hint" className="govuk-hint">
+            The name you&apos;ll use on promotional material.
+          </div>
+          <input
+            className="govuk-input"
+            id="event-name"
+            name="event-name"
+            type="text"
+            aria-describedby="event-name-hint"
           />
         </div>
       </Section>

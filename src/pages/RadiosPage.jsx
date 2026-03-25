@@ -51,6 +51,66 @@ export default function RadiosPage() {
         </div>
       </Section>
 
+      {/* Required */}
+      <Section title="Required" description="Use the required attribute to prevent form submission without a selection.">
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div className="govuk-form-group">
+            <fieldset className="govuk-fieldset" aria-describedby="nationality-hint">
+              <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+                What is your nationality?
+              </legend>
+              <div id="nationality-hint" className="govuk-hint">Select one option.</div>
+              <div className="govuk-radios" data-module="govuk-radios">
+                {['British', 'Irish', 'Citizen of another country'].map((option) => (
+                  <div className="govuk-radios__item" key={option}>
+                    <input
+                      className="govuk-radios__input"
+                      id={`nationality-${option.toLowerCase().replace(/ /g, '-')}`}
+                      name="nationality"
+                      type="radio"
+                      value={option.toLowerCase().replace(/ /g, '-')}
+                      required
+                    />
+                    <label
+                      className="govuk-label govuk-radios__label"
+                      htmlFor={`nationality-${option.toLowerCase().replace(/ /g, '-')}`}
+                    >
+                      {option}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </fieldset>
+          </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
+      </Section>
+
+      {/* With error */}
+      <Section title="With error">
+        <div className="govuk-form-group govuk-form-group--error">
+          <fieldset className="govuk-fieldset" aria-describedby="contact-error">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+              How do you want to be contacted?
+            </legend>
+            <p id="contact-error" className="govuk-error-message">
+              <span className="govuk-visually-hidden">Error:</span>
+              Select how you want to be contacted
+            </p>
+            <div className="govuk-radios" data-module="govuk-radios">
+              <div className="govuk-radios__item">
+                <input className="govuk-radios__input" id="contact-err-email" name="contact-err" type="radio" value="email" />
+                <label className="govuk-label govuk-radios__label" htmlFor="contact-err-email">Email</label>
+              </div>
+              <div className="govuk-radios__item">
+                <input className="govuk-radios__input" id="contact-err-phone" name="contact-err" type="radio" value="phone" />
+                <label className="govuk-label govuk-radios__label" htmlFor="contact-err-phone">Phone</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </Section>
+
       {/* Inline */}
       <Section title="Inline" description="Use inline radios when there are only 2 short options.">
         <div className="govuk-form-group">
@@ -152,31 +212,6 @@ export default function RadiosPage() {
                   </label>
                 </div>
               ))}
-            </div>
-          </fieldset>
-        </div>
-      </Section>
-
-      {/* With error */}
-      <Section title="With error">
-        <div className="govuk-form-group govuk-form-group--error">
-          <fieldset className="govuk-fieldset" aria-describedby="contact-error">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
-              How do you want to be contacted?
-            </legend>
-            <p id="contact-error" className="govuk-error-message">
-              <span className="govuk-visually-hidden">Error:</span>
-              Select how you want to be contacted
-            </p>
-            <div className="govuk-radios" data-module="govuk-radios">
-              <div className="govuk-radios__item">
-                <input className="govuk-radios__input" id="contact-err-email" name="contact-err" type="radio" value="email" />
-                <label className="govuk-label govuk-radios__label" htmlFor="contact-err-email">Email</label>
-              </div>
-              <div className="govuk-radios__item">
-                <input className="govuk-radios__input" id="contact-err-phone" name="contact-err" type="radio" value="phone" />
-                <label className="govuk-label govuk-radios__label" htmlFor="contact-err-phone">Phone</label>
-              </div>
             </div>
           </fieldset>
         </div>

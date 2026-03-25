@@ -40,19 +40,23 @@ export default function TextareaPage() {
         </div>
       </Section>
 
-      {/* Specifying rows */}
-      <Section title="With specified rows" description="Make the height proportional to the amount of text expected.">
-        <div className="govuk-form-group">
-          <label className="govuk-label" htmlFor="job-description">
-            Describe your work history
-          </label>
-          <textarea
-            className="govuk-textarea"
-            id="job-description"
-            name="job-description"
-            rows={8}
-          />
-        </div>
+      {/* Required */}
+      <Section title="Required" description="Use the required attribute to prevent form submission without content.">
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="required-detail">
+              Can you provide more detail?
+            </label>
+            <textarea
+              className="govuk-textarea"
+              id="required-detail"
+              name="required-detail"
+              rows={5}
+              required
+            />
+          </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
       </Section>
 
       {/* With error */}
@@ -74,6 +78,21 @@ export default function TextareaPage() {
             name="textarea-error"
             rows={5}
             aria-describedby="textarea-error-hint textarea-error-message"
+          />
+        </div>
+      </Section>
+
+      {/* Specifying rows */}
+      <Section title="With specified rows" description="Make the height proportional to the amount of text expected.">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="job-description">
+            Describe your work history
+          </label>
+          <textarea
+            className="govuk-textarea"
+            id="job-description"
+            name="job-description"
+            rows={8}
           />
         </div>
       </Section>

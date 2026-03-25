@@ -58,6 +58,76 @@ export default function CharacterCountPage() {
         </div>
       </Section>
 
+      {/* Required */}
+      <Section
+        title="Required"
+        description="Use the required attribute to prevent form submission without content."
+      >
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div
+            className="govuk-character-count"
+            data-module="govuk-character-count"
+            data-maxlength={200}
+          >
+            <div className="govuk-form-group">
+              <label className="govuk-label" htmlFor="required-detail-cc">
+                Can you provide more detail?
+              </label>
+              <textarea
+                className="govuk-textarea govuk-js-character-count"
+                id="required-detail-cc"
+                name="required-detail-cc"
+                rows={5}
+                aria-describedby="required-detail-cc-info"
+                required
+              />
+            </div>
+            <div
+              id="required-detail-cc-info"
+              className="govuk-hint govuk-character-count__message"
+            >
+              You can enter up to 200 characters
+            </div>
+          </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
+      </Section>
+
+      {/* With error */}
+      <Section title="With error" description="Show an error message when the user has exceeded the limit.">
+        <div
+          className="govuk-character-count"
+          data-module="govuk-character-count"
+          data-maxlength={200}
+        >
+          <div className="govuk-form-group govuk-form-group--error">
+            <label className="govuk-label" htmlFor="more-detail-err">
+              Can you provide more detail?
+            </label>
+            <div id="more-detail-err-hint" className="govuk-hint">
+              Do not include personal or financial information.
+            </div>
+            <p id="more-detail-err-error" className="govuk-error-message">
+              <span className="govuk-visually-hidden">Error:</span>
+              Enter more detail
+            </p>
+            <textarea
+              className="govuk-textarea govuk-js-character-count govuk-textarea--error"
+              id="more-detail-err"
+              name="more-detail-err"
+              rows={5}
+              aria-describedby="more-detail-err-hint more-detail-err-error more-detail-err-info"
+            />
+          </div>
+          <div
+            id="more-detail-err-info"
+            className="govuk-hint govuk-character-count__message"
+          >
+            You can enter up to 200 characters
+          </div>
+        </div>
+      </Section>
+
       {/* Word count */}
       <Section
         title="Word count"
@@ -123,41 +193,6 @@ export default function CharacterCountPage() {
             className="govuk-hint govuk-character-count__message"
           >
             You can enter up to 100 characters
-          </div>
-        </div>
-      </Section>
-
-      {/* With error */}
-      <Section title="With error" description="Show an error message when the user has exceeded the limit.">
-        <div
-          className="govuk-character-count"
-          data-module="govuk-character-count"
-          data-maxlength={200}
-        >
-          <div className="govuk-form-group govuk-form-group--error">
-            <label className="govuk-label" htmlFor="more-detail-err">
-              Can you provide more detail?
-            </label>
-            <div id="more-detail-err-hint" className="govuk-hint">
-              Do not include personal or financial information.
-            </div>
-            <p id="more-detail-err-error" className="govuk-error-message">
-              <span className="govuk-visually-hidden">Error:</span>
-              Enter more detail
-            </p>
-            <textarea
-              className="govuk-textarea govuk-js-character-count govuk-textarea--error"
-              id="more-detail-err"
-              name="more-detail-err"
-              rows={5}
-              aria-describedby="more-detail-err-hint more-detail-err-error more-detail-err-info"
-            />
-          </div>
-          <div
-            id="more-detail-err-info"
-            className="govuk-hint govuk-character-count__message"
-          >
-            You can enter up to 200 characters
           </div>
         </div>
       </Section>

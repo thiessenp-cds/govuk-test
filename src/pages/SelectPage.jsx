@@ -36,28 +36,24 @@ export default function SelectPage() {
         </div>
       </Section>
 
-      {/* With hint */}
-      <Section title="With hint" description="Add hint text to help users understand their options.">
-        <div className="govuk-form-group">
-          <label className="govuk-label" htmlFor="location">
-            Choose location
-          </label>
-          <div id="location-hint" className="govuk-hint">
-            This can be different to where you went before.
+      {/* Required */}
+      <Section title="Required" description="Use the required attribute to prevent form submission without a selection.">
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="required-location">
+              Choose location
+            </label>
+            <select className="govuk-select" id="required-location" name="required-location" required>
+              <option value="">Choose a location</option>
+              <option value="east-midlands">East Midlands</option>
+              <option value="east-england">East of England</option>
+              <option value="london">London</option>
+              <option value="north-east">North East</option>
+              <option value="south-east">South East</option>
+            </select>
           </div>
-          <select className="govuk-select" id="location" name="location" aria-describedby="location-hint">
-            <option value="">Choose a location</option>
-            <option value="east-midlands">East Midlands</option>
-            <option value="east-england">East of England</option>
-            <option value="london">London</option>
-            <option value="north-east">North East</option>
-            <option value="north-west">North West</option>
-            <option value="south-east">South East</option>
-            <option value="south-west">South West</option>
-            <option value="west-midlands">West Midlands</option>
-            <option value="yorkshire">Yorkshire and the Humber</option>
-          </select>
-        </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
       </Section>
 
       {/* With error */}
@@ -83,6 +79,30 @@ export default function SelectPage() {
             <option value="east-midlands">East Midlands</option>
             <option value="london">London</option>
             <option value="south-east">South East</option>
+          </select>
+        </div>
+      </Section>
+
+      {/* With hint */}
+      <Section title="With hint" description="Add hint text to help users understand their options.">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="location">
+            Choose location
+          </label>
+          <div id="location-hint" className="govuk-hint">
+            This can be different to where you went before.
+          </div>
+          <select className="govuk-select" id="location" name="location" aria-describedby="location-hint">
+            <option value="">Choose a location</option>
+            <option value="east-midlands">East Midlands</option>
+            <option value="east-england">East of England</option>
+            <option value="london">London</option>
+            <option value="north-east">North East</option>
+            <option value="north-west">North West</option>
+            <option value="south-east">South East</option>
+            <option value="south-west">South West</option>
+            <option value="west-midlands">West Midlands</option>
+            <option value="yorkshire">Yorkshire and the Humber</option>
           </select>
         </div>
       </Section>

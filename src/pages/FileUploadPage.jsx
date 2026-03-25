@@ -36,24 +36,23 @@ export default function FileUploadPage() {
         </div>
       </Section>
 
-      {/* With hint */}
-      <Section title="With hint" description="Use hint text to tell users what file types are accepted.">
-        <div className="govuk-form-group">
-          <label className="govuk-label" htmlFor="file-upload-hint">
-            Upload your document
-          </label>
-          <div id="file-upload-hint-text" className="govuk-hint">
-            The file must be a PDF, JPG or PNG and smaller than 2MB.
+      {/* Required */}
+      <Section title="Required" description="Use the required attribute to prevent form submission without a file selection.">
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="required-file">
+              Upload a file
+            </label>
+            <input
+              className="govuk-file-upload"
+              id="required-file"
+              name="required-file"
+              type="file"
+              required
+            />
           </div>
-          <input
-            className="govuk-file-upload"
-            id="file-upload-hint"
-            name="file-upload-hint"
-            type="file"
-            accept=".pdf,.jpg,.jpeg,.png"
-            aria-describedby="file-upload-hint-text"
-          />
-        </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
       </Section>
 
       {/* With error */}
@@ -75,6 +74,26 @@ export default function FileUploadPage() {
             name="file-upload-error"
             type="file"
             aria-describedby="file-upload-error-hint file-upload-error-message"
+          />
+        </div>
+      </Section>
+
+      {/* With hint */}
+      <Section title="With hint" description="Use hint text to tell users what file types are accepted.">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="file-upload-hint">
+            Upload your document
+          </label>
+          <div id="file-upload-hint-text" className="govuk-hint">
+            The file must be a PDF, JPG or PNG and smaller than 2MB.
+          </div>
+          <input
+            className="govuk-file-upload"
+            id="file-upload-hint"
+            name="file-upload-hint"
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png"
+            aria-describedby="file-upload-hint-text"
           />
         </div>
       </Section>

@@ -29,7 +29,7 @@ const COUNTRIES = [
   'Vietnam',
 ]
 
-function AutocompleteInput({ id, label, hint, source, options = {} }) {
+function AutocompleteInput({ id, label, hint, source, options = {}, error, required }) {
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -45,11 +45,15 @@ function AutocompleteInput({ id, label, hint, source, options = {} }) {
       showNoOptionsFound: true,
       ...options,
     })
+    if (required) {
+      const input = container.querySelector('input')
+      if (input) input.required = true
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   return (
-    <div className="govuk-form-group">
+    <div className={`govuk-form-group${error ? ' govuk-form-group--error' : ''}`}>
       <label className="govuk-label" htmlFor={id}>
         {label}
       </label>
@@ -57,6 +61,11 @@ function AutocompleteInput({ id, label, hint, source, options = {} }) {
         <div id={`${id}-hint`} className="govuk-hint">
           {hint}
         </div>
+      )}
+      {error && (
+        <p id={`${id}-error`} className="govuk-error-message">
+          <span className="govuk-visually-hidden">Error:</span> {error}
+        </p>
       )}
       <div ref={containerRef} />
     </div>
@@ -113,6 +122,36 @@ export default function ComboboxPage() {
           label="Select your country"
           hint="Start typing to see suggestions."
           source={COUNTRIES}
+        />
+      </Section>
+
+      {/* Required */}
+      <Section
+        title="Required"
+        description="Wrap the autocomplete in a form. The required attribute is applied to the underlying input after the library initialises."
+      >
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <AutocompleteInput
+            id="country-required"
+            label="Select your country"
+            hint="Start typing to see suggestions."
+            source={COUNTRIES}
+            required
+          />
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
+      </Section>
+
+      {/* With error */}
+      <Section
+        title="With error"
+        description="Apply the error state to the form group and show an error message above the input."
+      >
+        <AutocompleteInput
+          id="country-error"
+          label="Select your country"
+          source={COUNTRIES}
+          error="Select a country"
         />
       </Section>
 

@@ -58,42 +58,42 @@ export default function PasswordInputPage() {
         </div>
       </Section>
 
-      {/* New password */}
+      {/* Required */}
       <Section
-        title="Create a new password"
-        description="Use autocomplete='new-password' when asking users to create a password."
+        title="Required"
+        description="Use the required attribute to prevent form submission without a password."
       >
-        <div
-          className="govuk-form-group"
-          data-module="govuk-password-input"
-        >
-          <label className="govuk-label" htmlFor="new-password">
-            Create a password
-          </label>
-          <div id="new-password-hint" className="govuk-hint">
-            Your password must be 8 or more characters.
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div
+            className="govuk-form-group"
+            data-module="govuk-password-input"
+          >
+            <label className="govuk-label" htmlFor="required-password">
+              Password
+            </label>
+            <div className="govuk-input__wrapper govuk-password-input__wrapper">
+              <input
+                className="govuk-input govuk-password-input__input govuk-js-password-input-input"
+                id="required-password"
+                name="required-password"
+                type="password"
+                autoComplete="current-password"
+                spellCheck="false"
+                autoCapitalize="none"
+                required
+              />
+              <button
+                type="button"
+                className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+                aria-controls="required-password"
+                aria-label="Show password"
+              >
+                Show
+              </button>
+            </div>
           </div>
-          <div className="govuk-input__wrapper govuk-password-input__wrapper">
-            <input
-              className="govuk-input govuk-password-input__input govuk-js-password-input-input"
-              id="new-password"
-              name="new-password"
-              type="password"
-              autoComplete="new-password"
-              spellCheck="false"
-              autoCapitalize="none"
-              aria-describedby="new-password-hint"
-            />
-            <button
-              type="button"
-              className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
-              aria-controls="new-password"
-              aria-label="Show password"
-            >
-              Show
-            </button>
-          </div>
-        </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
       </Section>
 
       {/* With error */}
@@ -124,6 +124,44 @@ export default function PasswordInputPage() {
               type="button"
               className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
               aria-controls="password-error"
+              aria-label="Show password"
+            >
+              Show
+            </button>
+          </div>
+        </div>
+      </Section>
+
+      {/* New password */}
+      <Section
+        title="Create a new password"
+        description="Use autocomplete='new-password' when asking users to create a password."
+      >
+        <div
+          className="govuk-form-group"
+          data-module="govuk-password-input"
+        >
+          <label className="govuk-label" htmlFor="new-password">
+            Create a password
+          </label>
+          <div id="new-password-hint" className="govuk-hint">
+            Your password must be 8 or more characters.
+          </div>
+          <div className="govuk-input__wrapper govuk-password-input__wrapper">
+            <input
+              className="govuk-input govuk-password-input__input govuk-js-password-input-input"
+              id="new-password"
+              name="new-password"
+              type="password"
+              autoComplete="new-password"
+              spellCheck="false"
+              autoCapitalize="none"
+              aria-describedby="new-password-hint"
+            />
+            <button
+              type="button"
+              className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+              aria-controls="new-password"
               aria-label="Show password"
             >
               Show

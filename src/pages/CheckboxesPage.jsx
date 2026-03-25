@@ -53,6 +53,55 @@ export default function CheckboxesPage() {
         </div>
       </Section>
 
+      {/* Required */}
+      <Section title="Required" description="Use required on a single confirmation checkbox to ensure the user explicitly agrees before proceeding.">
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <div className="govuk-form-group">
+            <div className="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div className="govuk-checkboxes__item">
+                <input
+                  className="govuk-checkboxes__input"
+                  id="terms-agree"
+                  name="terms-agree"
+                  type="checkbox"
+                  value="agreed"
+                  required
+                />
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="terms-agree">
+                  I confirm I have read and understood the terms and conditions
+                </label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
+      </Section>
+
+      {/* With error */}
+      <Section title="With error">
+        <div className="govuk-form-group govuk-form-group--error">
+          <fieldset className="govuk-fieldset" aria-describedby="waste-err-error">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Which types of waste do you transport?
+            </legend>
+            <p id="waste-err-error" className="govuk-error-message">
+              <span className="govuk-visually-hidden">Error:</span>
+              Select which types of waste you transport
+            </p>
+            <div className="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div className="govuk-checkboxes__item">
+                <input className="govuk-checkboxes__input" id="waste-err-carcasses" name="waste-err" type="checkbox" value="carcasses" />
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-err-carcasses">Waste from animal carcasses</label>
+              </div>
+              <div className="govuk-checkboxes__item">
+                <input className="govuk-checkboxes__input" id="waste-err-mines" name="waste-err" type="checkbox" value="mines" />
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-err-mines">Waste from mines or quarries</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </Section>
+
       {/* With hints on items */}
       <Section title="With hints on items" description="Add hints to checkbox items to provide additional information.">
         <div className="govuk-form-group">
@@ -139,31 +188,6 @@ export default function CheckboxesPage() {
                   </label>
                 </div>
               ))}
-            </div>
-          </fieldset>
-        </div>
-      </Section>
-
-      {/* With error */}
-      <Section title="With error">
-        <div className="govuk-form-group govuk-form-group--error">
-          <fieldset className="govuk-fieldset" aria-describedby="waste-err-error">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Which types of waste do you transport?
-            </legend>
-            <p id="waste-err-error" className="govuk-error-message">
-              <span className="govuk-visually-hidden">Error:</span>
-              Select which types of waste you transport
-            </p>
-            <div className="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="waste-err-carcasses" name="waste-err" type="checkbox" value="carcasses" />
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-err-carcasses">Waste from animal carcasses</label>
-              </div>
-              <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="waste-err-mines" name="waste-err" type="checkbox" value="mines" />
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-err-mines">Waste from mines or quarries</label>
-              </div>
             </div>
           </fieldset>
         </div>

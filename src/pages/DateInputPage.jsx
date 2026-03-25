@@ -11,7 +11,7 @@ function Section({ title, description, children }) {
   )
 }
 
-function DateFields({ id, legend, hint, errorMessage, errorFields = [] }) {
+function DateFields({ id, legend, hint, errorMessage, errorFields = [], required = false }) {
   const hasError = errorMessage != null
 
   return (
@@ -49,6 +49,7 @@ function DateFields({ id, legend, hint, errorMessage, errorFields = [] }) {
                     name={name}
                     type="text"
                     inputMode="numeric"
+                    required={required}
                   />
                 </div>
               </div>
@@ -75,6 +76,39 @@ export default function DateInputPage() {
           id="passport-issued"
           legend="When was your passport issued?"
           hint="For example, 27 3 2007"
+        />
+      </Section>
+
+      {/* Required */}
+      <Section title="Required" description="Add required to each date field to prevent form submission without a complete date.">
+        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
+          <DateFields
+            id="required-passport"
+            legend="When was your passport issued?"
+            hint="For example, 27 3 2007"
+            required
+          />
+          <button type="submit" className="govuk-button">Continue</button>
+        </form>
+      </Section>
+
+      <Section title="With error (whole date)" description="Highlight all fields when the whole date is incorrect.">
+        <DateFields
+          id="passport-issued-err"
+          legend="When was your passport issued?"
+          hint="For example, 27 3 2007"
+          errorMessage="Enter the date your passport was issued"
+          errorFields={['day', 'month', 'year']}
+        />
+      </Section>
+
+      <Section title="With error (single field)" description="Highlight only the field containing the error.">
+        <DateFields
+          id="passport-issued-err2"
+          legend="When was your passport issued?"
+          hint="For example, 27 3 2007"
+          errorMessage="Date of passport issue must include a year"
+          errorFields={['year']}
         />
       </Section>
 
@@ -107,26 +141,6 @@ export default function DateInputPage() {
             </div>
           </fieldset>
         </div>
-      </Section>
-
-      <Section title="With error (whole date)" description="Highlight all fields when the whole date is incorrect.">
-        <DateFields
-          id="passport-issued-err"
-          legend="When was your passport issued?"
-          hint="For example, 27 3 2007"
-          errorMessage="Enter the date your passport was issued"
-          errorFields={['day', 'month', 'year']}
-        />
-      </Section>
-
-      <Section title="With error (single field)" description="Highlight only the field containing the error.">
-        <DateFields
-          id="passport-issued-err2"
-          legend="When was your passport issued?"
-          hint="For example, 27 3 2007"
-          errorMessage="Date of passport issue must include a year"
-          errorFields={['year']}
-        />
       </Section>
 
       <IssueTable issues={[]} />
