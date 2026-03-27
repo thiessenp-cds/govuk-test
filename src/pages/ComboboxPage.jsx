@@ -2,16 +2,7 @@ import { useEffect, useRef } from 'react'
 import accessibleAutocomplete from 'accessible-autocomplete'
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section'
 
 const COUNTRIES = [
   'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola',
@@ -112,10 +103,8 @@ export default function ComboboxPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default — type to filter */}
       <Section
         title="Default"
-        description="Type to filter a list of options. Shows matching results as you type."
       >
         <AutocompleteInput
           id="country-default"
@@ -125,27 +114,20 @@ export default function ComboboxPage() {
         />
       </Section>
 
-      {/* Required */}
       <Section
         title="Required"
-        description="Wrap the autocomplete in a form. The required attribute is applied to the underlying input after the library initialises."
       >
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <AutocompleteInput
-            id="country-required"
-            label="Select your country"
-            hint="Start typing to see suggestions."
-            source={COUNTRIES}
-            required
-          />
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+        <AutocompleteInput
+          id="country-required"
+          label="Select your country"
+          hint="Start typing to see suggestions."
+          source={COUNTRIES}
+          required
+        />
       </Section>
 
-      {/* With error */}
       <Section
         title="With error"
-        description="Apply the error state to the form group and show an error message above the input."
       >
         <AutocompleteInput
           id="country-error"
@@ -155,10 +137,8 @@ export default function ComboboxPage() {
         />
       </Section>
 
-      {/* Show all values — dropdown-like */}
       <Section
         title="Show all values"
-        description="Clicking the input reveals all options — similar behaviour to a native select dropdown."
       >
         <AutocompleteInput
           id="country-show-all"
@@ -169,10 +149,8 @@ export default function ComboboxPage() {
         />
       </Section>
 
-      {/* minLength — requires typing before suggestions appear */}
       <Section
         title="Minimum character length"
-        description="Suggestions only appear after the user has typed 2 or more characters."
       >
         <AutocompleteInput
           id="country-min-length"
@@ -183,10 +161,8 @@ export default function ComboboxPage() {
         />
       </Section>
 
-      {/* autoselect */}
       <Section
         title="With autoselect"
-        description="The first matching result is automatically highlighted. Pressing Enter confirms the selection."
       >
         <AutocompleteInput
           id="country-autoselect"
@@ -198,8 +174,7 @@ export default function ComboboxPage() {
 
       {/* Progressive enhancement from <select> */}
       <Section
-        title="Enhanced from a &lt;select&gt; element"
-        description="The accessible-autocomplete can progressively enhance an existing native select element. If JavaScript is unavailable, the original select is shown."
+        title="Progressive Enhanced from select"
       >
         <EnhancedSelect
           id="location-picker"

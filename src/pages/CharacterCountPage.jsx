@@ -1,16 +1,7 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
+import { Section } from '../components/Section'
 import { useGovukInit } from '../hooks/useGovukInit'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
 
 export default function CharacterCountPage() {
   useGovukInit()
@@ -24,10 +15,8 @@ export default function CharacterCountPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
       <Section
         title="Default"
-        description="Shows a live count of remaining characters as the user types."
       >
         <div
           className="govuk-character-count"
@@ -58,43 +47,37 @@ export default function CharacterCountPage() {
         </div>
       </Section>
 
-      {/* Required */}
       <Section
         title="Required"
-        description="Use the required attribute to prevent form submission without content."
       >
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div
-            className="govuk-character-count"
-            data-module="govuk-character-count"
-            data-maxlength={200}
-          >
-            <div className="govuk-form-group">
-              <label className="govuk-label" htmlFor="required-detail-cc">
-                Can you provide more detail?
-              </label>
-              <textarea
-                className="govuk-textarea govuk-js-character-count"
-                id="required-detail-cc"
-                name="required-detail-cc"
-                rows={5}
-                aria-describedby="required-detail-cc-info"
-                required
-              />
-            </div>
-            <div
-              id="required-detail-cc-info"
-              className="govuk-hint govuk-character-count__message"
-            >
-              You can enter up to 200 characters
-            </div>
+        <div
+          className="govuk-character-count"
+          data-module="govuk-character-count"
+          data-maxlength={200}
+        >
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="required-detail-cc">
+              Can you provide more detail?
+            </label>
+            <textarea
+              className="govuk-textarea govuk-js-character-count"
+              id="required-detail-cc"
+              name="required-detail-cc"
+              rows={5}
+              aria-describedby="required-detail-cc-info"
+              required
+            />
           </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+          <div
+            id="required-detail-cc-info"
+            className="govuk-hint govuk-character-count__message"
+          >
+            You can enter up to 200 characters
+          </div>
+        </div>
       </Section>
 
-      {/* With error */}
-      <Section title="With error" description="Show an error message when the user has exceeded the limit.">
+      <Section title="With error">
         <div
           className="govuk-character-count"
           data-module="govuk-character-count"
@@ -128,10 +111,8 @@ export default function CharacterCountPage() {
         </div>
       </Section>
 
-      {/* Word count */}
       <Section
         title="Word count"
-        description="Use a word count instead of a character count when appropriate."
       >
         <div
           className="govuk-character-count"
@@ -162,10 +143,8 @@ export default function CharacterCountPage() {
         </div>
       </Section>
 
-      {/* With threshold */}
       <Section
         title="With threshold"
-        description="Only show the count message when the user has typed 75% or more of the limit."
       >
         <div
           className="govuk-character-count"

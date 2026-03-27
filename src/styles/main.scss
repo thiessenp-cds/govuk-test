@@ -1,5 +1,7 @@
 $govuk-assets-path: '/govuk-test/assets/';
 
+@import './app-notes.scss';
+
 @import 'govuk-frontend/dist/govuk/index';
 @import 'accessible-autocomplete/dist/accessible-autocomplete.min.css';
 
@@ -56,5 +58,16 @@ body {
 
   &__title {
     margin-bottom: 0;
+  }
+}
+
+.slight-underline {
+  &::after {
+    content: '';
+    display: block;
+    width: govuk-spacing(9);
+    height: govuk-spacing(1);
+    background: $govuk-brand-colour;
+    margin-top: govuk-spacing(2);
   }
 }

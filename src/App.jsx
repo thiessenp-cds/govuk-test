@@ -10,6 +10,7 @@ import CharacterCountPage from './pages/CharacterCountPage'
 import PasswordInputPage from './pages/PasswordInputPage'
 import ComboboxPage from './pages/ComboboxPage'
 import AddressFormPage from './pages/AddressFormPage'
+import { Notes } from './components/Notes'
 
 const components = [
   { name: 'Text input', path: 'text-input', description: "Let users enter text that's no longer than a single line." },
@@ -84,6 +85,12 @@ function HomePage() {
           </div>
         </div>
       </div>
+
+      <Notes
+        items={[
+          "Note: the gov.uk standard for marking an input as required is to use the HTML required attribute on the input element. So no asteriks or required wording in the label text. Semantically this works but is not clear visually IMO - I guess you could add required-guidance in the hint text",
+        ]}
+      />
     </Layout>
   )
 }

@@ -1,15 +1,6 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section';
 
 export default function RadiosPage() {
   return (
@@ -21,11 +12,10 @@ export default function RadiosPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
-      <Section title="Default" description="Basic radios inside a fieldset with a legend as the page heading.">
+      <Section title="Default">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               <h2 className="govuk-fieldset__heading">Where do you live?</h2>
             </legend>
             <div className="govuk-radios" data-module="govuk-radios">
@@ -51,46 +41,41 @@ export default function RadiosPage() {
         </div>
       </Section>
 
-      {/* Required */}
-      <Section title="Required" description="Use the required attribute to prevent form submission without a selection.">
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div className="govuk-form-group">
-            <fieldset className="govuk-fieldset" aria-describedby="nationality-hint">
-              <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
-                What is your nationality?
-              </legend>
-              <div id="nationality-hint" className="govuk-hint">Select one option.</div>
-              <div className="govuk-radios" data-module="govuk-radios">
-                {['British', 'Irish', 'Citizen of another country'].map((option) => (
-                  <div className="govuk-radios__item" key={option}>
-                    <input
-                      className="govuk-radios__input"
-                      id={`nationality-${option.toLowerCase().replace(/ /g, '-')}`}
-                      name="nationality"
-                      type="radio"
-                      value={option.toLowerCase().replace(/ /g, '-')}
-                      required
-                    />
-                    <label
-                      className="govuk-label govuk-radios__label"
-                      htmlFor={`nationality-${option.toLowerCase().replace(/ /g, '-')}`}
-                    >
-                      {option}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </fieldset>
-          </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+      <Section title="Required">
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset" aria-describedby="nationality-hint">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
+              What is your nationality?
+            </legend>
+            <div id="nationality-hint" className="govuk-hint">Select one option. (could add a note about required)</div>
+            <div className="govuk-radios" data-module="govuk-radios">
+              {['British', 'Irish', 'Citizen of another country'].map((option) => (
+                <div className="govuk-radios__item" key={option}>
+                  <input
+                    className="govuk-radios__input"
+                    id={`nationality-${option.toLowerCase().replace(/ /g, '-')}`}
+                    name="nationality"
+                    type="radio"
+                    value={option.toLowerCase().replace(/ /g, '-')}
+                    required
+                  />
+                  <label
+                    className="govuk-label govuk-radios__label"
+                    htmlFor={`nationality-${option.toLowerCase().replace(/ /g, '-')}`}
+                  >
+                    {option}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </fieldset>
+        </div>
       </Section>
 
-      {/* With error */}
       <Section title="With error">
         <div className="govuk-form-group govuk-form-group--error">
           <fieldset className="govuk-fieldset" aria-describedby="contact-error">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               How do you want to be contacted?
             </legend>
             <p id="contact-error" className="govuk-error-message">
@@ -111,11 +96,10 @@ export default function RadiosPage() {
         </div>
       </Section>
 
-      {/* Inline */}
-      <Section title="Inline" description="Use inline radios when there are only 2 short options.">
+      <Section title="Inline">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               Have you changed your name?
             </legend>
             <div className="govuk-hint">This includes changing your last name or spelling your name differently.</div>
@@ -133,11 +117,10 @@ export default function RadiosPage() {
         </div>
       </Section>
 
-      {/* With hints on items */}
-      <Section title="With hints on items" description="Add hints to radio items to provide additional information.">
+      <Section title="With hints on items">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               How do you want to be contacted?
             </legend>
             <div className="govuk-radios" data-module="govuk-radios">
@@ -161,11 +144,10 @@ export default function RadiosPage() {
         </div>
       </Section>
 
-      {/* With divider */}
-      <Section title="With divider" description="Use a divider to separate options that are different from the others.">
+      <Section title="With divider">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               How do you want to sign in?
             </legend>
             <div className="govuk-radios" data-module="govuk-radios">
@@ -187,11 +169,10 @@ export default function RadiosPage() {
         </div>
       </Section>
 
-      {/* Small radios */}
-      <Section title="Small radios" description="Use smaller radios where it's helpful to be less visually prominent.">
+      <Section title="Small radios">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               Filter by status
             </legend>
             <div className="govuk-radios govuk-radios--small" data-module="govuk-radios">

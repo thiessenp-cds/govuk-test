@@ -1,15 +1,6 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section'
 
 function DateFields({ id, legend, hint, errorMessage, errorFields = [], required = false }) {
   const hasError = errorMessage != null
@@ -21,7 +12,7 @@ function DateFields({ id, legend, hint, errorMessage, errorFields = [], required
         role="group"
         aria-describedby={[hint && `${id}-hint`, hasError && `${id}-error`].filter(Boolean).join(' ')}
       >
-        <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
           <h2 className="govuk-fieldset__heading">{legend}</h2>
         </legend>
         {hint && <div id={`${id}-hint`} className="govuk-hint">{hint}</div>}
@@ -71,7 +62,7 @@ export default function DateInputPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      <Section title="Default" description="Three fields for day, month, year grouped in a fieldset.">
+      <Section title="Default">
         <DateFields
           id="passport-issued"
           legend="When was your passport issued?"
@@ -79,20 +70,16 @@ export default function DateInputPage() {
         />
       </Section>
 
-      {/* Required */}
-      <Section title="Required" description="Add required to each date field to prevent form submission without a complete date.">
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <DateFields
-            id="required-passport"
-            legend="When was your passport issued?"
-            hint="For example, 27 3 2007"
-            required
-          />
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+      <Section title="Required">
+        <DateFields
+          id="required-passport"
+          legend="When was your passport issued?"
+          hint="For example, 27 3 2007"
+          required
+        />
       </Section>
 
-      <Section title="With error (whole date)" description="Highlight all fields when the whole date is incorrect.">
+      <Section title="With error (whole date)">
         <DateFields
           id="passport-issued-err"
           legend="When was your passport issued?"
@@ -102,7 +89,7 @@ export default function DateInputPage() {
         />
       </Section>
 
-      <Section title="With error (single field)" description="Highlight only the field containing the error.">
+      <Section title="With error (single field)">
         <DateFields
           id="passport-issued-err2"
           legend="When was your passport issued?"
@@ -112,10 +99,10 @@ export default function DateInputPage() {
         />
       </Section>
 
-      <Section title="Date of birth (with autocomplete)" description="Use autocomplete attributes for date of birth to enable browser autofill.">
+      <Section title="Date of birth (with autocomplete)">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset" role="group" aria-describedby="dob-hint">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               <h2 className="govuk-fieldset__heading">What is your date of birth?</h2>
             </legend>
             <div id="dob-hint" className="govuk-hint">For example, 31 3 1980</div>

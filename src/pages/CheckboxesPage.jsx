@@ -1,15 +1,6 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section';
 
 export default function CheckboxesPage() {
   return (
@@ -21,11 +12,10 @@ export default function CheckboxesPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
-      <Section title="Default" description="Multi-select checkboxes inside a fieldset.">
+      <Section title="Default">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               <h2 className="govuk-fieldset__heading">Which types of waste do you transport?</h2>
             </legend>
             <div id="waste-hint" className="govuk-hint">Select all that apply.</div>
@@ -53,35 +43,30 @@ export default function CheckboxesPage() {
         </div>
       </Section>
 
-      {/* Required */}
-      <Section title="Required" description="Use required on a single confirmation checkbox to ensure the user explicitly agrees before proceeding.">
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div className="govuk-form-group">
-            <div className="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div className="govuk-checkboxes__item">
-                <input
-                  className="govuk-checkboxes__input"
-                  id="terms-agree"
-                  name="terms-agree"
-                  type="checkbox"
-                  value="agreed"
-                  required
-                />
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="terms-agree">
-                  I confirm I have read and understood the terms and conditions
-                </label>
-              </div>
+      <Section title="Required">
+        <div className="govuk-form-group">
+          <div className="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div className="govuk-checkboxes__item">
+              <input
+                className="govuk-checkboxes__input"
+                id="terms-agree"
+                name="terms-agree"
+                type="checkbox"
+                value="agreed"
+                required
+              />
+              <label className="govuk-label govuk-checkboxes__label" htmlFor="terms-agree">
+                I confirm I have read and understood the terms and conditions
+              </label>
             </div>
           </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+        </div>
       </Section>
 
-      {/* With error */}
       <Section title="With error">
         <div className="govuk-form-group govuk-form-group--error">
           <fieldset className="govuk-fieldset" aria-describedby="waste-err-error">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               Which types of waste do you transport?
             </legend>
             <p id="waste-err-error" className="govuk-error-message">
@@ -102,11 +87,10 @@ export default function CheckboxesPage() {
         </div>
       </Section>
 
-      {/* With hints on items */}
-      <Section title="With hints on items" description="Add hints to checkbox items to provide additional information.">
+      <Section title="With hints on items">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               What is your nationality?
             </legend>
             <div id="nationality-hint" className="govuk-hint">
@@ -131,11 +115,11 @@ export default function CheckboxesPage() {
         </div>
       </Section>
 
-      {/* With 'none' option */}
-      <Section title="With &#39;none&#39; option" description="Give users the option to explicitly indicate none apply.">
+
+      <Section title="With &#39;none&#39; option">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               Will you be travelling to any of these countries?
             </legend>
             <div className="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -163,11 +147,10 @@ export default function CheckboxesPage() {
         </div>
       </Section>
 
-      {/* Small checkboxes */}
-      <Section title="Small checkboxes" description="Use smaller checkboxes where it's helpful to be less visually prominent.">
+      <Section title="Small checkboxes">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
               Filter by category
             </legend>
             <div className="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">

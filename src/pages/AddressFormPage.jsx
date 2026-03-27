@@ -10,13 +10,6 @@ const ERROR_MESSAGES = {
   postcode: 'Enter your postcode',
 }
 
-const FIELD_LABELS = {
-  fullName: 'Full name',
-  addressLine1: 'Address line 1',
-  town: 'Town or city',
-  postcode: 'Postcode',
-}
-
 function validate(values) {
   const errors = {}
   for (const field of REQUIRED_FIELDS) {

@@ -1,15 +1,6 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section';
 
 export default function SelectPage() {
   return (
@@ -21,8 +12,7 @@ export default function SelectPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
-      <Section title="Default" description="A basic select dropdown with a visible label.">
+      <Section title="Default">
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="sort-by">
             Sort by
@@ -36,27 +26,25 @@ export default function SelectPage() {
         </div>
       </Section>
 
-      {/* Required */}
-      <Section title="Required" description="Use the required attribute to prevent form submission without a selection.">
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="required-location">
-              Choose location
-            </label>
-            <select className="govuk-select" id="required-location" name="required-location" required>
-              <option value="">Choose a location</option>
-              <option value="east-midlands">East Midlands</option>
-              <option value="east-england">East of England</option>
-              <option value="london">London</option>
-              <option value="north-east">North East</option>
-              <option value="south-east">South East</option>
-            </select>
+      <Section title="Required">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="required-location">
+            Choose location
+          </label>
+          <div id="location-hint" className="govuk-hint">
+            This can be different to where you went before. (could add note about required field)
           </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+          <select className="govuk-select" id="required-location" name="required-location" aria-describedby="location-hint" required>
+            <option value="">Choose a location</option>
+            <option value="east-midlands">East Midlands</option>
+            <option value="east-england">East of England</option>
+            <option value="london">London</option>
+            <option value="north-east">North East</option>
+            <option value="south-east">South East</option>
+          </select>
+        </div>
       </Section>
 
-      {/* With error */}
       <Section title="With error">
         <div className="govuk-form-group govuk-form-group--error">
           <label className="govuk-label" htmlFor="location-error">
@@ -79,30 +67,6 @@ export default function SelectPage() {
             <option value="east-midlands">East Midlands</option>
             <option value="london">London</option>
             <option value="south-east">South East</option>
-          </select>
-        </div>
-      </Section>
-
-      {/* With hint */}
-      <Section title="With hint" description="Add hint text to help users understand their options.">
-        <div className="govuk-form-group">
-          <label className="govuk-label" htmlFor="location">
-            Choose location
-          </label>
-          <div id="location-hint" className="govuk-hint">
-            This can be different to where you went before.
-          </div>
-          <select className="govuk-select" id="location" name="location" aria-describedby="location-hint">
-            <option value="">Choose a location</option>
-            <option value="east-midlands">East Midlands</option>
-            <option value="east-england">East of England</option>
-            <option value="london">London</option>
-            <option value="north-east">North East</option>
-            <option value="north-west">North West</option>
-            <option value="south-east">South East</option>
-            <option value="south-west">South West</option>
-            <option value="west-midlands">West Midlands</option>
-            <option value="yorkshire">Yorkshire and the Humber</option>
           </select>
         </div>
       </Section>

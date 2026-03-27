@@ -1,16 +1,7 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
+import { Section } from '../components/Section'
 import { useGovukInit } from '../hooks/useGovukInit'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
 
 export default function PasswordInputPage() {
   useGovukInit()
@@ -24,10 +15,8 @@ export default function PasswordInputPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
       <Section
         title="Default"
-        description="A password input with a show/hide toggle. Requires JavaScript (govuk-frontend initAll)."
       >
         <div
           className="govuk-form-group"
@@ -58,45 +47,39 @@ export default function PasswordInputPage() {
         </div>
       </Section>
 
-      {/* Required */}
       <Section
         title="Required"
-        description="Use the required attribute to prevent form submission without a password."
       >
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div
-            className="govuk-form-group"
-            data-module="govuk-password-input"
-          >
-            <label className="govuk-label" htmlFor="required-password">
-              Password
-            </label>
-            <div className="govuk-input__wrapper govuk-password-input__wrapper">
-              <input
-                className="govuk-input govuk-password-input__input govuk-js-password-input-input"
-                id="required-password"
-                name="required-password"
-                type="password"
-                autoComplete="current-password"
-                spellCheck="false"
-                autoCapitalize="none"
-                required
-              />
-              <button
-                type="button"
-                className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
-                aria-controls="required-password"
-                aria-label="Show password"
-              >
-                Show
-              </button>
-            </div>
+        <div
+          className="govuk-form-group"
+          data-module="govuk-password-input"
+        >
+          <label className="govuk-label" htmlFor="required-password">
+            Password
+          </label>
+          <div className="govuk-input__wrapper govuk-password-input__wrapper">
+            <input
+              className="govuk-input govuk-password-input__input govuk-js-password-input-input"
+              id="required-password"
+              name="required-password"
+              type="password"
+              autoComplete="current-password"
+              spellCheck="false"
+              autoCapitalize="none"
+              required
+            />
+            <button
+              type="button"
+              className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+              aria-controls="required-password"
+              aria-label="Show password"
+            >
+              Show
+            </button>
           </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+        </div>
       </Section>
 
-      {/* With error */}
       <Section title="With error">
         <div
           className="govuk-form-group govuk-form-group--error"
@@ -132,10 +115,8 @@ export default function PasswordInputPage() {
         </div>
       </Section>
 
-      {/* New password */}
       <Section
         title="Create a new password"
-        description="Use autocomplete='new-password' when asking users to create a password."
       >
         <div
           className="govuk-form-group"

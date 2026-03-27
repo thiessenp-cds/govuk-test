@@ -1,17 +1,9 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section'
 
 export default function TextInputPage() {
+
   return (
     <Layout backLink>
       <h1 className="govuk-heading-xl app-page-heading">
@@ -21,10 +13,8 @@ export default function TextInputPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
       <Section
         title="Default"
-        description="A basic text input with a visible label."
       >
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="full-name">
@@ -40,33 +30,30 @@ export default function TextInputPage() {
         </div>
       </Section>
 
-      {/* Required */}
       <Section
         title="Required"
-        description="Use the required attribute to prevent form submission without a value."
       >
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="required-full-name">
-              Full name
-            </label>
-            <input
-              className="govuk-input"
-              id="required-full-name"
-              name="required-full-name"
-              type="text"
-              autoComplete="name"
-              required
-            />
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="required-full-name">
+            Full name
+          </label>
+           <div id="event-name-hint" className="govuk-hint">
+            The name you'll use on promotional material. (could add a note about required here)
           </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+          <input
+            className="govuk-input"
+            id="required-full-name"
+            name="required-full-name"
+            type="text"
+            aria-describedby="required-full-name"
+            autoComplete="name"
+            required
+          />
+        </div>
       </Section>
 
-      {/* With error */}
       <Section
         title="With error"
-        description="Follow the error message guidance when validating text inputs."
       >
         <div className="govuk-form-group govuk-form-group--error">
           <label className="govuk-label" htmlFor="name-error">
@@ -89,32 +76,8 @@ export default function TextInputPage() {
         </div>
       </Section>
 
-      {/* With hint text */}
-      <Section
-        title="With hint text"
-        description="Use hint text for help that's relevant to the majority of users."
-      >
-        <div className="govuk-form-group">
-          <label className="govuk-label" htmlFor="event-name">
-            What is the name of the event?
-          </label>
-          <div id="event-name-hint" className="govuk-hint">
-            The name you&apos;ll use on promotional material.
-          </div>
-          <input
-            className="govuk-input"
-            id="event-name"
-            name="event-name"
-            type="text"
-            aria-describedby="event-name-hint"
-          />
-        </div>
-      </Section>
-
-      {/* Fixed width inputs */}
       <Section
         title="Fixed width inputs"
-        description="Use fixed width inputs for content with a specific, known length."
       >
         {[
           { width: '2', label: '2 characters', id: 'input-width-2' },
@@ -138,10 +101,8 @@ export default function TextInputPage() {
         ))}
       </Section>
 
-      {/* With prefix */}
       <Section
         title="With prefix"
-        description="Use prefixes to help users enter things like currencies."
       >
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="cost-prefix">
@@ -163,10 +124,8 @@ export default function TextInputPage() {
         </div>
       </Section>
 
-      {/* With suffix */}
       <Section
         title="With suffix"
-        description="Use suffixes to help users enter things like measurements."
       >
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="weight">
@@ -188,10 +147,8 @@ export default function TextInputPage() {
         </div>
       </Section>
 
-      {/* With prefix and suffix */}
       <Section
         title="With prefix and suffix"
-        description="Combine prefix and suffix when the input has both a unit symbol and qualifier."
       >
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="cost-per-item">

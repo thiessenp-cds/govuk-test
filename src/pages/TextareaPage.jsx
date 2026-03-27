@@ -1,15 +1,6 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
-
-function Section({ title, description, children }) {
-  return (
-    <section className="govuk-!-margin-bottom-9">
-      <h2 className="govuk-heading-l">{title}</h2>
-      {description && <p className="govuk-body">{description}</p>}
-      <div className="govuk-!-margin-top-4">{children}</div>
-    </section>
-  )
-}
+import { Section } from '../components/Section'
 
 export default function TextareaPage() {
   return (
@@ -21,46 +12,40 @@ export default function TextareaPage() {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
-      {/* Default */}
-      <Section title="Default" description="A basic textarea with a visible label.">
+      <Section title="Default">
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="more-detail">
             Can you provide more detail?
           </label>
-          <div id="more-detail-hint" className="govuk-hint">
-            Do not include personal or financial information, like your National Insurance number or credit card details.
-          </div>
           <textarea
             className="govuk-textarea"
             id="more-detail"
             name="more-detail"
             rows={5}
-            aria-describedby="more-detail-hint"
           />
         </div>
       </Section>
 
-      {/* Required */}
-      <Section title="Required" description="Use the required attribute to prevent form submission without content.">
-        <form noValidate onSubmit={(e) => { e.preventDefault(); alert('Form submitted!') }}>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="required-detail">
-              Can you provide more detail?
-            </label>
-            <textarea
-              className="govuk-textarea"
-              id="required-detail"
-              name="required-detail"
-              rows={5}
-              required
-            />
+      <Section title="Required">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="required-detail">
+            Can you provide more detail?
+          </label>
+          <div id="more-detail-hint" className="govuk-hint">
+            Do not include personal or financial information, like your National Insurance number or credit card details. (could add a note about required here)
           </div>
-          <button type="submit" className="govuk-button">Continue</button>
-        </form>
+          <textarea
+            className="govuk-textarea"
+            id="required-detail"
+            name="required-detail"
+            aria-describedby="more-detail-hint"
+            rows={5}
+            required
+          />
+        </div>
       </Section>
 
-      {/* With error */}
-      <Section title="With error" description="Style error messages above the field.">
+      <Section title="With error">
         <div className="govuk-form-group govuk-form-group--error">
           <label className="govuk-label" htmlFor="textarea-error">
             Can you provide more detail?
@@ -82,8 +67,7 @@ export default function TextareaPage() {
         </div>
       </Section>
 
-      {/* Specifying rows */}
-      <Section title="With specified rows" description="Make the height proportional to the amount of text expected.">
+      <Section title="With specified rows (height)">
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="job-description">
             Describe your work history
