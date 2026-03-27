@@ -11,6 +11,7 @@ export function useGovukInit() {
       initAll()
     } catch {
       // initAll may throw if already initialised; safe to ignore
+      console.log("Error initializing govuk-frontend initAll()")
     }
   }, [])
 }

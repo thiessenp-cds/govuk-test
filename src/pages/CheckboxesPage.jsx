@@ -1,8 +1,10 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
 import { Section } from '../components/Section';
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function CheckboxesPage() {
+  useDocumentTitle('Checkboxes - My gov.uk form component test')
   return (
     <Layout backLink>
       <h1 className="govuk-heading-xl app-page-heading">

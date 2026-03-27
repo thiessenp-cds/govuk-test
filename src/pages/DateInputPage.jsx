@@ -1,6 +1,7 @@
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
 import { Section } from '../components/Section'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 function DateFields({ id, legend, hint, errorMessage, errorFields = [], required = false }) {
   const hasError = errorMessage != null
@@ -53,6 +54,7 @@ function DateFields({ id, legend, hint, errorMessage, errorFields = [], required
 }
 
 export default function DateInputPage() {
+  useDocumentTitle('Date input - My gov.uk form component test')
   return (
     <Layout backLink>
       <h1 className="govuk-heading-xl app-page-heading">

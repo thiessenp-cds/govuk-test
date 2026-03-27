@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Layout } from '../App'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const REQUIRED_FIELDS = ['fullName', 'addressLine1', 'town', 'postcode']
 
@@ -21,6 +22,7 @@ function validate(values) {
 }
 
 export default function AddressFormPage() {
+  useDocumentTitle('Address form - My gov.uk form component test')
   const [values, setValues] = useState({
     fullName: '',
     addressLine1: '',

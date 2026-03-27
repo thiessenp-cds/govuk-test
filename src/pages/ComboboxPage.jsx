@@ -3,6 +3,7 @@ import accessibleAutocomplete from 'accessible-autocomplete'
 import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
 import { Section } from '../components/Section'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const COUNTRIES = [
   'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola',
@@ -70,6 +71,7 @@ function AutocompleteInput({ id, label, hint, source, options = {}, error, requi
 }
 
 export default function ComboboxPage() {
+  useDocumentTitle('Accessible autocomplete - My gov.uk form component test')
   return (
     <Layout backLink>
       <h1 className="govuk-heading-xl app-page-heading">

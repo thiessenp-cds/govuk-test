@@ -2,10 +2,11 @@ import { Layout } from '../App'
 import IssueTable from '../components/IssueTable'
 import { Section } from '../components/Section'
 import { useGovukInit } from '../hooks/useGovukInit'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function CharacterCountPage() {
   useGovukInit()
-
+  useDocumentTitle('Character count - My gov.uk form component test')
   return (
     <Layout backLink>
       <h1 className="govuk-heading-xl app-page-heading">
