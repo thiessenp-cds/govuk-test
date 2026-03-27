@@ -63,36 +63,6 @@ function AutocompleteInput({ id, label, hint, source, options = {}, error, requi
   )
 }
 
-function EnhancedSelect({ id, label, hint, children }) {
-  const selectRef = useRef(null)
-  const wrapperRef = useRef(null)
-
-  useEffect(() => {
-    const selectEl = selectRef.current
-    if (!selectEl) return
-    accessibleAutocomplete.enhanceSelectElement({
-      selectElement: selectEl,
-      defaultValue: '',
-    })
-  }, [id])
-
-  return (
-    <div className="govuk-form-group" ref={wrapperRef}>
-      <label className="govuk-label" htmlFor={id}>
-        {label}
-      </label>
-      {hint && (
-        <div id={`${id}-hint`} className="govuk-hint">
-          {hint}
-        </div>
-      )}
-      <select className="govuk-select" id={id} name={id} ref={selectRef}>
-        {children}
-      </select>
-    </div>
-  )
-}
-
 export default function ComboboxPage() {
   return (
     <Layout backLink>
@@ -100,6 +70,42 @@ export default function ComboboxPage() {
         Accessible autocomplete (combobox)
         <a className="govuk-link govuk-!-font-size-19 govuk-!-font-weight-regular" href="https://github.com/alphagov/accessible-autocomplete" target="_blank" rel="noreferrer">Accessible autocomplete reference (GitHub)</a>
       </h1>
+
+      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+
+      <Section
+        title="Progressively Enhanced from select (desktop gets combobox , touch gets native select)"
+      >
+        {/* Only render the native select. accessible-autocomplete will enhance it for desktop, and show native select for touch devices. */}
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="location-picker">
+            Choose a location
+          </label>
+          <div id="location-picker-hint" className="govuk-hint">
+            This is enhanced from a native select element.
+          </div>
+          <select className="govuk-select" id="location-picker" name="location-picker" ref={el => {
+            if (el && !el.dataset.enhanced) {
+              accessibleAutocomplete.enhanceSelectElement({
+                selectElement: el,
+                defaultValue: '',
+              });
+              el.dataset.enhanced = 'true';
+            }
+          }}>
+            <option value="">Choose a location</option>
+            <option value="east-midlands">East Midlands</option>
+            <option value="east-england">East of England</option>
+            <option value="london">London</option>
+            <option value="north-east">North East</option>
+            <option value="north-west">North West</option>
+            <option value="south-east">South East</option>
+            <option value="south-west">South West</option>
+            <option value="west-midlands">West Midlands</option>
+            <option value="yorkshire">Yorkshire and the Humber</option>
+          </select>
+        </div>
+      </Section>
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
@@ -170,28 +176,6 @@ export default function ComboboxPage() {
           source={COUNTRIES}
           options={{ autoselect: true }}
         />
-      </Section>
-
-      {/* Progressive enhancement from <select> */}
-      <Section
-        title="Progressive Enhanced from select"
-      >
-        <EnhancedSelect
-          id="location-picker"
-          label="Choose a location"
-          hint="This is enhanced from a native select element."
-        >
-          <option value="">Choose a location</option>
-          <option value="east-midlands">East Midlands</option>
-          <option value="east-england">East of England</option>
-          <option value="london">London</option>
-          <option value="north-east">North East</option>
-          <option value="north-west">North West</option>
-          <option value="south-east">South East</option>
-          <option value="south-west">South West</option>
-          <option value="west-midlands">West Midlands</option>
-          <option value="yorkshire">Yorkshire and the Humber</option>
-        </EnhancedSelect>
       </Section>
 
       <IssueTable issues={[
