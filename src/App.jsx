@@ -11,6 +11,7 @@ import PasswordInputPage from './pages/PasswordInputPage'
 import ComboboxPage from './pages/ComboboxPage'
 import AddressFormPage from './pages/AddressFormPage'
 import { Notes } from './components/Notes'
+import { useDocumentTitle } from './hooks/useDocumentTitle'
 
 const components = [
   { name: 'Text input', path: 'text-input', description: "Let users enter text that's no longer than a single line." },
@@ -56,6 +57,7 @@ export function Layout({ children, backLink }) {
 }
 
 function HomePage() {
+  useDocumentTitle('My gov.uk form component test')
   return (
     <Layout>
       <h1 className="govuk-heading-xl app-home-heading">My gov.uk form component test</h1>
