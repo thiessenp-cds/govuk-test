@@ -116,6 +116,43 @@ export default function PasswordInputPage() {
       </Section>
 
       <Section
+        title="Disabled"
+      >
+        <div
+          className="govuk-form-group"
+          data-module="govuk-password-input"
+        >
+          <label className="govuk-label" htmlFor="disabled-password">
+            Password
+          </label>
+          <div className="govuk-input__wrapper govuk-password-input__wrapper">
+            <input
+              className="govuk-input govuk-password-input__input govuk-js-password-input-input"
+              id="disabled-password"
+              name="disabled-password"
+              type="password"
+              autoComplete="current-password"
+              spellCheck="false"
+              autoCapitalize="none"
+              disabled
+              aria-disabled="true"
+              value="Cannot edit this"
+              readOnly
+            />
+            <button
+              type="button"
+              className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+              aria-controls="disabled-password"
+              aria-label="Show password"
+              disabled
+            >
+              Show
+            </button>
+          </div>
+        </div>
+      </Section>
+
+      <Section
         title="Create a new password"
       >
         <div

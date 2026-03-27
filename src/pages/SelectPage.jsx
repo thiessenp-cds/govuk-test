@@ -45,6 +45,7 @@ export default function SelectPage() {
         </div>
       </Section>
 
+
       <Section title="With error">
         <div className="govuk-form-group govuk-form-group--error">
           <label className="govuk-label" htmlFor="location-error">
@@ -62,6 +63,28 @@ export default function SelectPage() {
             id="location-error"
             name="location-error"
             aria-describedby="location-error-hint location-error-message"
+          >
+            <option value="">Choose a location</option>
+            <option value="east-midlands">East Midlands</option>
+            <option value="london">London</option>
+            <option value="south-east">South East</option>
+          </select>
+        </div>
+      </Section>
+
+      <Section title="Disabled">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="disabled-select">
+            Choose location
+          </label>
+          <select
+            className="govuk-select"
+            id="disabled-select"
+            name="disabled-select"
+            disabled
+            aria-disabled="true"
+            value="east-midlands"
+            readOnly
           >
             <option value="">Choose a location</option>
             <option value="east-midlands">East Midlands</option>

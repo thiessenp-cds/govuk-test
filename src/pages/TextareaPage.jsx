@@ -67,6 +67,24 @@ export default function TextareaPage() {
         </div>
       </Section>
 
+      <Section title="Disabled">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="disabled-detail">
+            More detail
+          </label>
+          <textarea
+            className="govuk-textarea"
+            id="disabled-detail"
+            name="disabled-detail"
+            rows={5}
+            disabled
+            aria-disabled="true"
+            value="Cannot edit this"
+            readOnly
+          />
+        </div>
+      </Section>
+
       <Section title="With specified rows (height)">
         <div className="govuk-form-group">
           <label className="govuk-label" htmlFor="job-description">

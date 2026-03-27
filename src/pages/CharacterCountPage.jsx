@@ -112,6 +112,38 @@ export default function CharacterCountPage() {
       </Section>
 
       <Section
+        title="Disabled"
+      >
+        <div
+          className="govuk-character-count"
+          data-module="govuk-character-count"
+          data-maxlength={200}
+        >
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="disabled-detail-cc">
+              More detail (disabled)
+            </label>
+            <textarea
+              className="govuk-textarea govuk-js-character-count"
+              id="disabled-detail-cc"
+              name="disabled-detail-cc"
+              rows={5}
+              disabled
+              aria-disabled="true"
+              value="Cannot edit this"
+              readOnly
+            />
+          </div>
+          <div
+            id="disabled-detail-cc-info"
+            className="govuk-hint govuk-character-count__message"
+          >
+            You can enter up to 200 characters
+          </div>
+        </div>
+      </Section>
+
+      <Section
         title="Word count"
       >
         <div

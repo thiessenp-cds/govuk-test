@@ -99,6 +99,18 @@ export default function DateInputPage() {
         />
       </Section>
 
+      <Section title="Disabled">
+        <DateFields
+          id="disabled-passport"
+          legend="When was your passport issued?"
+          hint="For example, 27 3 2007"
+          required={false}
+          errorMessage={null}
+          errorFields={[]}
+          disabled={true}
+        />
+      </Section>
+
       <Section title="Date of birth (with autocomplete)">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset" role="group" aria-describedby="dob-hint">

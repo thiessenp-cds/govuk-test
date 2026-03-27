@@ -69,6 +69,22 @@ export default function FileUploadPage() {
         </div>
       </Section>
 
+      <Section title="Disabled">
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="disabled-file-upload">
+            Upload a file
+          </label>
+          <input
+            className="govuk-file-upload"
+            id="disabled-file-upload"
+            name="disabled-file-upload"
+            type="file"
+            disabled
+            aria-disabled="true"
+          />
+        </div>
+      </Section>
+
       <IssueTable issues={[]} />
     </Layout>
   )

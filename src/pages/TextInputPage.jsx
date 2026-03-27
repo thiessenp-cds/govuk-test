@@ -77,6 +77,26 @@ export default function TextInputPage() {
       </Section>
 
       <Section
+        title="Disabled"
+      >
+        <div className="govuk-form-group">
+          <label className="govuk-label" htmlFor="disabled-full-name">
+            Full name
+          </label>
+          <input
+            className="govuk-input"
+            id="disabled-full-name"
+            name="disabled-full-name"
+            type="text"
+            autoComplete="name"
+            disabled
+            value="Cannot edit this"
+            aria-disabled="true"
+          />
+        </div>
+      </Section>
+
+      <Section
         title="Fixed width inputs"
       >
         {[

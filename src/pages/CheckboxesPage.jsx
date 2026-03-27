@@ -87,6 +87,38 @@ export default function CheckboxesPage() {
         </div>
       </Section>
 
+      <Section title="Disabled">
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h2 className="govuk-fieldset__heading">Which types of waste do you transport? (disabled)</h2>
+            </legend>
+            <div className="govuk-checkboxes" data-module="govuk-checkboxes">
+              {[
+                { value: 'carcasses', label: 'Waste from animal carcasses' },
+                { value: 'mines', label: 'Waste from mines or quarries' },
+                { value: 'farm', label: 'Farm or agricultural waste' },
+              ].map(({ value, label }) => (
+                <div className="govuk-checkboxes__item" key={value}>
+                  <input
+                    className="govuk-checkboxes__input"
+                    id={`disabled-waste-${value}`}
+                    name="disabled-waste"
+                    type="checkbox"
+                    value={value}
+                    disabled
+                    aria-disabled="true"
+                  />
+                  <label className="govuk-label govuk-checkboxes__label" htmlFor={`disabled-waste-${value}`}>
+                    {label}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+      </Section>
+
       <Section title="With hints on items">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">

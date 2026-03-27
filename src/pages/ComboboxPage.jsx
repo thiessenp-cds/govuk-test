@@ -20,13 +20,12 @@ const COUNTRIES = [
   'Vietnam',
 ]
 
-function AutocompleteInput({ id, label, hint, source, options = {}, error, required }) {
+function AutocompleteInput({ id, label, hint, source, options = {}, error, required, disabled }) {
   const containerRef = useRef(null)
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
-    // Clear any previous instance when remounting
     container.innerHTML = ''
     accessibleAutocomplete({
       element: container,
@@ -36,12 +35,19 @@ function AutocompleteInput({ id, label, hint, source, options = {}, error, requi
       showNoOptionsFound: true,
       ...options,
     })
-    if (required) {
-      const input = container.querySelector('input')
-      if (input) input.required = true
+    // Set required and disabled attributes on the generated input
+    const input = container.querySelector('input')
+    if (input) {
+      if (required) input.required = true
+      if (disabled) {
+        input.disabled = true
+        input.setAttribute('aria-disabled', 'true')
+        input.value = 'Cannot edit this'
+        input.readOnly = true
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  }, [id, required, disabled])
 
   return (
     <div className={`govuk-form-group${error ? ' govuk-form-group--error' : ''}`}>
@@ -74,7 +80,7 @@ export default function ComboboxPage() {
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
 
       <Section
-        title="Progressively Enhanced from select (desktop gets combobox , touch gets native select)"
+        title="*Progressively Enhanced Combobox (desktop gets combobox , touch gets native select)"
       >
         {/* Only render the native select. accessible-autocomplete will enhance it for desktop, and show native select for touch devices. */}
         <div className="govuk-form-group">
@@ -107,10 +113,8 @@ export default function ComboboxPage() {
         </div>
       </Section>
 
-      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
-
       <Section
-        title="Default"
+        title="Default (all users get enhanced combobox)"
       >
         <AutocompleteInput
           id="country-default"
@@ -132,6 +136,7 @@ export default function ComboboxPage() {
         />
       </Section>
 
+
       <Section
         title="With error"
       >
@@ -140,6 +145,18 @@ export default function ComboboxPage() {
           label="Select your country"
           source={COUNTRIES}
           error="Select a country"
+        />
+      </Section>
+
+      <Section
+        title="Disabled"
+      >
+        <AutocompleteInput
+          id="country-disabled"
+          label="Select your country (disabled)"
+          hint="This field is disabled."
+          source={COUNTRIES}
+          disabled
         />
       </Section>
 

@@ -96,6 +96,37 @@ export default function RadiosPage() {
         </div>
       </Section>
 
+      <Section title="Disabled">
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h2 className="govuk-fieldset__heading">Where do you live?</h2>
+            </legend>
+            <div className="govuk-radios" data-module="govuk-radios">
+              {['England', 'Scotland', 'Wales', 'Northern Ireland'].map((option) => (
+                <div className="govuk-radios__item" key={option}>
+                  <input
+                    className="govuk-radios__input"
+                    id={`disabled-where-live-${option.toLowerCase().replace(' ', '-')}`}
+                    name="disabled-where-live"
+                    type="radio"
+                    value={option.toLowerCase().replace(' ', '-')}
+                    disabled
+                    aria-disabled="true"
+                  />
+                  <label
+                    className="govuk-label govuk-radios__label"
+                    htmlFor={`disabled-where-live-${option.toLowerCase().replace(' ', '-')}`}
+                  >
+                    {option}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+      </Section>
+
       <Section title="Inline">
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
